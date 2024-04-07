@@ -17,12 +17,10 @@ public class BookResponseDto {
     private Integer id;
     private String title;
     private String isbn;
-    private Set<Author> authors;
 
     public BookResponseDto(Book b){
         this.id = b.getId();
         this.title = b.getTitle();
         this.isbn = b.getIsbn();
-        this.authors = b.getAuthors();
     }
 }

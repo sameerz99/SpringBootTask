@@ -15,11 +15,9 @@ import java.util.Set;
 public class AuthorResponseDto {
     private Integer id;
     private String name;
-    private Set<Book> books;
 
     public AuthorResponseDto(Author a){
         this.id = a.getId();
         this.name = a.getName();
-        this.books = a.getBooks();
     }
 }
