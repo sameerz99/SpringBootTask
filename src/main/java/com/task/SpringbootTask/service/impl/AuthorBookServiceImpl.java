@@ -53,4 +53,9 @@ public class AuthorBookServiceImpl implements AuthorBookService {
         List<AuthorBook> authorBooks = authorBookRepo.findByAuthorId(authorId);
         return authorBooks.stream().map(AuthorBook::getBook).collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteAllAuthorBookLinks() {
+        authorBookRepo.deleteAll();
+    }
 }

@@ -11,4 +11,5 @@ public interface BookService {
     void deleteBookInfoById(Integer id);
     BookResponseDto updateBookInfo(Integer id, BookRequestDto bookRequestDto);
     List<BookResponseDto> getAllBooks();
+    void deleteAllBooks();
 }

@@ -59,4 +59,9 @@ public class BookServiceImpl implements BookService {
         }
         return returnList;
     }
+
+    @Override
+    public void deleteAllBooks() {
+        bookRepo.deleteAll();
+    }
 }

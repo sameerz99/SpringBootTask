@@ -10,4 +10,5 @@ public interface AuthorBookService {
     void removeAuthorFromBook(Integer authorId, Integer bookId);
     List<Author> getAuthorsOfBook(Integer bookId);
     List<Book> getBooksOfAuthor(Integer authorId);
+    void deleteAllAuthorBookLinks();
 }
