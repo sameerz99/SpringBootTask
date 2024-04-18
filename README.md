@@ -26,3 +26,9 @@ Recommended: Spring boot version 2.5, java version 11, latest MySQL, Postman
 #### Service Layer Testing
 - write unit tests for your service layer, particularly for complex logic handling the many-to-many relationships.
 - Here, you would mock the repository layer interactions.
+
+### Task 5: Writing Integration Tests --> Completed
+- What to Do: Check how Authors and Books work together by running integration tests.
+- Tools: Use @DataJpaTest for testing how your database handles Authors and Books.
+- Goal: Make sure you can add Authors to Books and Books to Authors and that everything links up correctly.
+
