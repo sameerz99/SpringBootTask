@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.task.SpringbootTask.service.AuthorService;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -49,8 +50,12 @@ public class AuthorController {
     //for linking book and author check book controller
     @DeleteMapping("/{authorId}/books/{bookId}")
     public ResponseEntity<String> removeBookFromAuthor(@PathVariable Integer authorId, @PathVariable Integer bookId){
-        authorBookService.removeAuthorFromBook(authorId, bookId);
-        return ResponseEntity.ok("Book Removed from the author's list Successfully.");
+        try{
+            authorBookService.removeAuthorFromBook(authorId, bookId);
+            return ResponseEntity.ok("Book Removed from the author's list Successfully.");
+        }catch (EntityNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
 }

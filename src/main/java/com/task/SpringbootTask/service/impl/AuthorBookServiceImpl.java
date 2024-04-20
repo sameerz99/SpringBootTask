@@ -27,10 +27,13 @@ public class AuthorBookServiceImpl implements AuthorBookService {
     @Transactional
     public void addAuthorToBook(Integer authorId, Integer bookId) {
         AuthorBook authorBook = new AuthorBook();
-        authorBook.setAuthor(authorRepo.findById(authorId).orElseThrow(
-                ()-> new EntityNotFoundException("Author not found with id: "+ authorId)));
-        authorBook.setBook(bookRepo.findById(bookId).orElseThrow(
-                ()-> new EntityNotFoundException("Book not found with id: "+ bookId)));
+        Author author = authorRepo.findById(authorId).orElseThrow(
+                () -> new EntityNotFoundException("Author not found with id " + authorId ));
+        Book book = bookRepo.findById(bookId).orElseThrow(
+                () -> new EntityNotFoundException("Book not found with id " + bookId )
+        );
+        authorBook.setAuthor(author);
+        authorBook.setBook(book);
         authorBookRepo.save(authorBook);
     }
 

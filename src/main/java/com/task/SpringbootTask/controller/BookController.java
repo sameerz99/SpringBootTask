@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.task.SpringbootTask.service.BookService;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -49,7 +50,11 @@ public class BookController {
     //for removing link check AuthorController
     @PostMapping("/{bookId}/authors/{authorId}")
     public ResponseEntity<String> linkAuthorToBook(@PathVariable Integer bookId, @PathVariable Integer authorId) {
-        authorBookService.addAuthorToBook(authorId, bookId);
-        return ResponseEntity.ok("Author linked to the book successfully.");
+        try{
+            authorBookService.addAuthorToBook(authorId, bookId);
+            return ResponseEntity.ok("Author linked to the book successfully.");
+        }catch (EntityNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }
